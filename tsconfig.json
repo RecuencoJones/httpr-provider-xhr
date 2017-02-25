@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "files": [
+    "app/Index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
