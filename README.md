@@ -1,4 +1,5 @@
 [![npm package](https://badge.fury.io/js/httpr-provider-xhr.svg)](https://badge.fury.io/js/httpr-provider-xhr)
+[![Build Status](https://travis-ci.org/RecuencoJones/httpr-provider-xhr.png?branch=develop)](https://travis-ci.org/RecuencoJones/httpr-provider-xhr)
 
 # httpr-provider-xhr
 
