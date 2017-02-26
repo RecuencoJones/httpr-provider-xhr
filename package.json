@@ -1,6 +1,6 @@
 {
   "name": "httpr-provider-xhr",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0-rc2",
   "description": "HTTP XHR Provider",
   "main": "dist/httpr-provider-xhr.js",
   "types": "defs/index.d.ts",
@@ -21,7 +21,8 @@
     "npm": ">= 3"
   },
   "peerDependencies": {
-    "httpr": "^1.0.0"
+    "lodash": "^4.0.0",
+    "httpr": ">= 1"
   },
   "devDependencies": {
     "@types/chai": "3.4.35",
@@ -32,7 +33,7 @@
     "barrel-defgen": "~1.0.0",
     "chai": "3.5.0",
     "es6-promise": "4.0.5",
-    "httpr": "../httpr",
+    "httpr": "1.0.0-rc1",
     "karma": "1.5.0",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "2.0.0",

@@ -1,3 +1,10 @@
+## 1.0.0-rc2
+
+- Added lodash peer dependency.
+- Added some unit tests.
+- Fixed httpr dependency.
+- Fixed error with content-type check.
+
 ## 1.0.0-rc1
 
 - Initial version of the library.
