@@ -1,5 +1,8 @@
 const webpackConfig = require('../../build/webpack.config');
 
+webpackConfig.externals.chai = 'chai';
+webpackConfig.externals.sinon = 'sinon';
+
 module.exports = (config) => {
   config.set({
     basePath: '../../',

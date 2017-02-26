@@ -10,6 +10,9 @@ import {
   MediaTypes
 } from 'httpr';
 
+/**
+ * Httpr provider implemented with XMLHttpRequest for usage in browser environments.
+ */
 export class XHRProvider extends HttprProvider {
   /**
    * @inheritDoc
@@ -32,7 +35,8 @@ export class XHRProvider extends HttprProvider {
 
       xhr.onreadystatechange = () => {
         let response: HttpResponse,
-          headers: StringMap;
+          headers: StringMap,
+          contentType: string;
 
         if (xhr.readyState === 4) {
           headers = _.fromPairs(xhr.getAllResponseHeaders()
@@ -48,7 +52,9 @@ export class XHRProvider extends HttprProvider {
           };
 
           if (xhr.status >= 200 && xhr.status <= 400) {
-            if (headers[HttpHeaders.CONTENT_TYPE].indexOf(MediaTypes.APPLICATION_JSON) >= 0) {
+            contentType = headers[HttpHeaders.CONTENT_TYPE];
+
+            if (contentType && contentType.indexOf(MediaTypes.APPLICATION_JSON) >= 0) {
               response.data = JSON.parse(response.responseText);
             } else {
               response.data = response.responseText;
