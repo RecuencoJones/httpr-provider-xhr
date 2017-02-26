@@ -1,12 +1,28 @@
 import * as _ from 'lodash';
-import {HttprProvider, HttpRequestSettings, urlEncode, urlJoin, Map, HttpHeaders, MediaTypes} from 'httpr';
+import {
+  HttprProvider,
+  HttpRequestSettings,
+  HttpResponse,
+  urlEncode,
+  urlJoin,
+  StringMap,
+  HttpHeaders,
+  MediaTypes
+} from 'httpr';
 
 export class XHRProvider extends HttprProvider {
-  public request(settings: HttpRequestSettings) {
+  /**
+   * @inheritDoc
+   */
+  public request(settings: HttpRequestSettings): Promise<HttpResponse> {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest(),
         queryParams = urlEncode(settings.params),
         url = queryParams ? urlJoin(settings.url, queryParams) : settings.url;
+
+      if (_.startsWith(url, '/')) {
+        url = `${location.origin}${url}`;
+      }
 
       xhr.open(settings.method.toUpperCase(), url, true);
 
@@ -15,15 +31,14 @@ export class XHRProvider extends HttprProvider {
       });
 
       xhr.onreadystatechange = () => {
-        let response, headers: Map<string>, data;
+        let response: HttpResponse,
+          headers: StringMap;
 
         if (xhr.readyState === 4) {
           headers = _.fromPairs(xhr.getAllResponseHeaders()
           .split('\n')
           .map((header) => header.split(':').map((part) => part.trim()))
-          .filter((header) => !!header[0])) as Map<string>;
-
-
+          .filter((header) => !!header[0])) as StringMap;
 
           response = {
             status: xhr.status,
@@ -31,7 +46,6 @@ export class XHRProvider extends HttprProvider {
             responseText: xhr.responseText,
             headers: headers
           };
-
 
           if (xhr.status >= 200 && xhr.status <= 400) {
             if (headers[HttpHeaders.CONTENT_TYPE].indexOf(MediaTypes.APPLICATION_JSON) >= 0) {
