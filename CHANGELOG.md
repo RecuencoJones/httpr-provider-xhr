@@ -2,6 +2,7 @@
 
 - Added travis integration.
 - Fixed query params.
+- Fixed headers parsing.
 
 ## 1.0.0-rc2
 

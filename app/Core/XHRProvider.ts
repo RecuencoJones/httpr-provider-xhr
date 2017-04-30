@@ -42,6 +42,11 @@ export class XHRProvider extends HttprProvider {
           headers = _.fromPairs(xhr.getAllResponseHeaders()
           .split('\n')
           .map((header) => header.split(':').map((part) => part.trim()))
+          .map((data) => {
+            data[0] = data[0].toLowerCase();
+
+            return data;
+          })
           .filter((header) => !!header[0])) as StringMap;
 
           response = {
