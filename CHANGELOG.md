@@ -1,6 +1,7 @@
 ## 1.0.0-rc3
 
 - Added travis integration.
+- Fixed query params.
 
 ## 1.0.0-rc2
 
