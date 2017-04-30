@@ -1,3 +1,9 @@
+## 1.0.0-rc3
+
+- Added travis integration.
+- Fixed query params.
+- Fixed headers parsing.
+
 ## 1.0.0-rc2
 
 - Added lodash peer dependency.

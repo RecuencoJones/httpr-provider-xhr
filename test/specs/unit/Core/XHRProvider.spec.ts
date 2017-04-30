@@ -39,4 +39,26 @@ describe('XHR Provider', () => {
       });
     });
   });
+
+  it('should parse a JSON response', () => {
+    const data = {
+      foo: 'bar'
+    };
+
+    server.respondWith('get', '/', [
+      200, {
+        'content-type': 'application/json'
+      }, JSON.stringify(data)
+    ]);
+
+    return provider.request({
+      method: 'get',
+      url: '/',
+      params: {},
+      headers: {}
+    })
+    .then((response: HttpResponse) => {
+      expect(response.data).to.deep.equal(data);
+    });
+  });
 });
