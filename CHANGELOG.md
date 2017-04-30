@@ -1,3 +1,7 @@
+## 1.0.0-rc5
+
+- Fixed query params problems with different approach.
+
 ## 1.0.0-rc4
 
 - Rolled back query params fix.
