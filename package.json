@@ -1,6 +1,6 @@
 {
   "name": "httpr-provider-xhr",
-  "version": "1.0.0-rc3",
+  "version": "1.0.0-rc5",
   "description": "HTTP XHR Provider",
   "main": "dist/httpr-provider-xhr.js",
   "types": "defs/index.d.ts",

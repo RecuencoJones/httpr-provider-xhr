@@ -4,7 +4,6 @@ import {
   HttpRequestSettings,
   HttpResponse,
   urlEncode,
-  urlJoin,
   StringMap,
   HttpHeaders,
   MediaTypes
@@ -21,7 +20,7 @@ export class XHRProvider extends HttprProvider {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest(),
         queryParams = urlEncode(settings.params),
-        url = queryParams ? urlJoin(settings.url, `?${queryParams}`) : settings.url;
+        url = queryParams ? `${settings.url}?${queryParams}` : settings.url;
 
       if (_.startsWith(url, '/')) {
         url = `${location.origin}${url}`;
